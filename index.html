@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <title>Scuffdle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  .scuffed-space {
+    letter-spacing: 1.5em;
+  }
+</style>
+
+<body id="scuffdle" class="bg-slate-800">
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="text-white mt-32 text-6xl mb-10">Scuffdle</h1>
+    <div id="row1" class="scuffdle-row ml-16 text-white text-4xl scuffed-space">_____</div>
+    <div id="row2" class="scuffdle-row ml-16 text-white text-4xl scuffed-space">_____</div>
+    <div id="row3" class="scuffdle-row ml-16 text-white text-4xl scuffed-space">_____</div>
+    <div id="row4" class="scuffdle-row ml-16 text-white text-4xl scuffed-space">_____</div>
+    <div id="row5" class="scuffdle-row ml-16 text-white text-4xl scuffed-space">_____</div>
+  </div>
+</body>
+
+<script>
+  let currentRow = 0;
+  let currentCol = 0;
+  let word = "igloo";
+  function main() {
+    let scuffdle = document.querySelector("#scuffdle");
+    let rows = document.querySelectorAll(".scuffdle-row");
+    scuffdle.addEventListener("keydown", (event) => {
+      let key = event.key.toUpperCase();
+      // console.log(key)
+      if (event.keyCode >= 65 && event.keyCode <= 90) {
+        // A-Z
+        if (currentCol < 5) {
+          let rowContents = rows[currentRow].innerHTML.split("");
+          console.log(rowContents);
+          rowContents[currentCol] = key;
+          rows[currentRow].innerHTML = rowContents;
+          console.log(rowContents[currentCol]);
+          // console.log(rows[currentRow])
+          // console.log(rows[currentRow].innerHTML)
+          currentCol += 1;
+        }
+      } else if (event.keyCode === 8) {
+        // Backspace
+        console.log("backspace");
+        if (currentCol > 0) {
+          currentCol -= 1;
+        }
+      } else if (event.keyCode === 13) {
+        // Enter
+        if (currentCol === 5) {
+          currentRow += 1;
+          currentCol = 0;
+        }
+        console.log("enter");
+      }
+    });
+  }
+
+  main();
+
+</script>
+
+</html>
