@@ -1,21 +1,25 @@
 # Scuffdle
 
-Wordle-clone for teaching Javascript
+Wordle-clone for teaching friends Javascript
 
 ## Browser specific knowledge
 These are functions I needed to use to communicate with our 6x5 wordle Grid
 
 https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+
  `.querySelector()`
  Grabs a Dom element by either its ID or Class. Because it only grabs a single Dom element I usually use it for ID's
 
  https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+ 
  `.querySelectorAll()`
  Same as querySelector but returns a list of DOM elements. Because it grabs multiple I usually use it for Classes
 
 
 The document object allows you to access each HTML element. If I want to grab each row of the wordle board I'll use
+
 `let rows = document.querySelectorAll(".scuffdle-row");`
+
 row0
 
 row1
